@@ -3,6 +3,9 @@ import WordDescription from './WordDescription';
 
 function QwertyInput(): JSX.Element {
   const [text, setText] = useState('')
+  const [typedMessage, setTypedMessage] = useState("");
+
+  //should be able to use keyboard AND accept input from buttons
 
   const addLetter = (letter: string) => {
     setText(text + letter);
@@ -22,7 +25,10 @@ function QwertyInput(): JSX.Element {
   return (
     <>
       <input
-        value={text}
+        value={typedMessage}
+        onChange={(event) => {
+          setTypedMessage(event.target.value);
+        }}
       />
       <button onClick={() => addLetter('Q')}>Q</button>
       <button onClick={() => addLetter('W')}>W</button>
@@ -34,6 +40,11 @@ function QwertyInput(): JSX.Element {
       <button onClick={() => addLetter('I')}>I</button>
       <button onClick={() => addLetter('O')}>O</button>
       <button onClick={() => addLetter('P')}>P</button>
+      <button onClick={() => addLetter('!')}>!</button>
+      <button onClick={() => addLetter('?')}>?</button>
+
+
+
       <br />
       <button onClick={handleBackspace}>Backspace</button>
       <button onClick={() => setText('')}>Clear all</button>
